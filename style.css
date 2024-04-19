@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#app{
+  padding: 35px;
+  height: 100vh;
+}
+.cart{
+  display: flex;
+  justify-content: end;
+  margin-right: 20%;
+  gap: 5px;
+  font-size: 18px;
+  align-items: center;
+}
+.product-list{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 40px;
+  justify-content: center;
+}
+
+.product{
+  width: 350px;
+  display:  grid;
+  gap: 5px;
+  position: relative;
+  
+}
+.product .p-img{
+  border-radius: 14px;
+}
+.icon{
+  cursor: pointer;
+  width: 43px;
+  height: 43px;
+}
+.bg-linear{
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0) );
+  bottom: -65px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  transition: .3s ease;
+}
+
+.product:hover .bg-linear{
+  bottom: 0;
+}
