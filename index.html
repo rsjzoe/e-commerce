@@ -15,12 +15,38 @@
           alt=""
         />
       </div>
-      <div class="cart cursor-pointer" id="pannier">
-        <span>Pannier</span>
-        <img src="cart-shopping-svgrepo-com.svg" class="w-5 h-5" alt="" />
+      <div class="flex justify-end gap-16 p-1">
+        <div class="search-input p-[2px] h- rounded-[22px] bg-white flex">
+          <input
+            type="text"
+            placeholder="search product..."
+            class="p-1 text-sm bg-transparent focus:outline-none"
+          />
+          <div class="bg-[#E89651] p-1  rounded-full flex items-center cursor-pointer">
+            <img src="search-svgrepo-com.svg" class="h-5 w-5" alt="" />
+            <!-- <span class="text-sm font-semibold text-white">search</span> -->
+          </div>
+        </div>
+
+        <div class="cart right-1 cursor-pointer" id="pannier">
+          <span>Trolley</span>
+          <img src="cart-shopping-svgrepo-com.svg" class="w-5 h-5" alt="" />
+          <span
+            class="compteur absolute bg-white h-5 w-5 -mr-3 -mt-5 text-center text-xs flex justify-center items-center text-red-800 font-bold rounded-full"
+            >0</span
+          >
+        </div>
+      </div>
+
+      <div class="cadre absolute h-24 bg-white -bottom-16">
+        <p class="">coucou</p>
       </div>
     </div>
-    <div><h1 class="text-2xl font-bold mt-3 text-center">list produit</h1></div>
+    <div>
+      <h1 class="text-[25px] font-bold mt-16 text-center">
+        <span class="list-title">Our</span> Products
+      </h1>
+    </div>
     <div class="product-list mt-3"></div>
 
     <!-- modal -->
@@ -35,11 +61,9 @@
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow">
           <!-- Modal header -->
-          <div
-            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t"
-          >
-            <h3 class="text-xl font-semibold text-center text-gray-900">
-              Terms of Service
+          <div class="flex items-center p-4 md:p-5 border-b rounded-t">
+            <h3 class="text-xl font-semibold text-center ml-44 text-gray-900">
+              The List of your Purchases
             </h3>
             <button
               type="button"
@@ -67,7 +91,9 @@
           </div>
           <!-- Modal body -->
           <div class="list-cart p-4 md:p-5 space-y-4"></div>
-          <div class="total">0$</div>
+          <div class="text-center p-5 font-semibold">
+            Total: <span class="total">0$</span>
+          </div>
         </div>
       </div>
     </div>
