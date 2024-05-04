@@ -6,6 +6,38 @@ const btnPannier = document.querySelector("#pannier");
 const listCart = document.querySelector(".list-cart");
 const total = document.querySelector(".total");
 const compteur = document.querySelector(".compteur");
+const cadre = document.querySelector(".cadre-container");
+const c = document.querySelector(".cadre");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains("cadre-container")) {
+          c.style.transform = "translateX(0px)";
+        } else if (entry.target.classList.contains("rectangle-container")) {
+          if (entry.target.classList.contains("right")) {
+            entry.target.querySelector(".rectangle-right").style.transform =
+              "translateX(0)";
+          } else {
+            entry.target.querySelector(".rectangle-left").style.transform =
+              "translateX(0)";
+          }
+        }
+        observer.unobserve(entry.target);
+
+        // console.log(entry.target);
+      }
+    }
+  },
+  {
+    threshold: 1,
+  }
+);
+observer.observe(cadre);
+document.querySelectorAll(".rectangle-container").forEach((r) => {
+  observer.observe(r);
+});
 
 btnPannier.onclick = () => {
   modal.style.transform = "scale(1)";
@@ -139,7 +171,7 @@ class Product {
                 xmlns="http://www.w3.org/2000/svg"
                 class="${
                   "i-" + this.id
-                } icon bg-white rounded-full transition-all p-3 hover:bg-slate-200"
+                } icon bg-white rounded-full p-3 transition-all hover:bg-slate-200 hover:scale-105"
                 >
                 <path
                     d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
@@ -158,9 +190,7 @@ class Product {
                 </div>
                 <div class="flex items-center gap-1">
                   <img src="money-bag-svgrepo-com.svg" class="h-5 w-5" alt="" />
-                  <div class="text-sm">$${
-                    this.price
-                  }</div>
+                  <div class="text-sm">${this.price}$</div>
                 </div>
             </div>
         </div>
@@ -187,7 +217,7 @@ class Product {
 }
 const products = [
   new Product("Coco chanel", 100, "img2.jpg", 0, 1),
-  new Product("SHEIN", 300, "img3.jpg", 0, 2),
+  new Product("Our Fashion", 300, "img3.jpg", 0, 2),
   new Product("Elevate your style with YSL", 100, "img10.jpg", 0, 3),
   new Product("Create ur own style with Us", 450, "img11.jpg", 0, 4),
   new Product("Maki Madagascar", 150, "img14.jpg", 0, 5),
